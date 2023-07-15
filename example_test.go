@@ -14,11 +14,11 @@ import (
 //
 // If you want to actually run this example:
 //
-//   1. Ensure the file paths at the top of the function are correct.
-//   2. Remove the word "Example" from the comment at the bottom of the
-//      function.
-//   3. Run:
-//      go test -test.run=Example$ github.com/tebeka/selenium
+//  1. Ensure the file paths at the top of the function are correct.
+//  2. Remove the word "Example" from the comment at the bottom of the
+//     function.
+//  3. Run:
+//     go test -test.run=Example$ github.com/tebeka/selenium
 func Example() {
 	// Start a Selenium WebDriver server instance (if one is not already
 	// running).
@@ -29,7 +29,7 @@ func Example() {
 		port            = 8080
 	)
 	opts := []selenium.ServiceOption{
-		selenium.StartFrameBuffer(),           // Start an X frame buffer for the browser to run in.
+		selenium.StartFrameBuffer(),           // Start an X frame buffer for the Browser to run in.
 		selenium.GeckoDriver(geckoDriverPath), // Specify the path to GeckoDriver in order to use Firefox.
 		selenium.Output(os.Stderr),            // Output debug information to STDERR.
 	}
@@ -142,7 +142,7 @@ func Example() {
 	// will be executed sequentially.
 	// "keyboard1" is used as a unique virtual device identifier
 	// for this and future actions.
-	// The stored action chain will send keyboard inputs to the browser.
+	// The stored action chain will send keyboard inputs to the Browser.
 	selenium.StoreKeyActions("keyboard1",
 		selenium.KeyDownAction(selenium.ControlKey),
 		selenium.KeyPauseAction(50),

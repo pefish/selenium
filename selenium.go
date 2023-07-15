@@ -12,7 +12,7 @@ import (
 
 // Methods by which to find elements.
 const (
-	ByID              = "id"
+	ByID              = "Id"
 	ByXPATH           = "xpath"
 	ByLinkText        = "link text"
 	ByPartialLinkText = "partial link text"
@@ -91,26 +91,26 @@ const (
 )
 
 // Capabilities configures both the WebDriver process and the target browsers,
-// with standard and browser-specific options.
+// with standard and Browser-specific options.
 type Capabilities map[string]interface{}
 
-// AddChrome adds Chrome-specific capabilities.
+// AddChrome adds Chrome-specific Capabilities_.
 func (c Capabilities) AddChrome(f chrome.Capabilities) {
 	c[chrome.CapabilitiesKey] = f
 	c[chrome.DeprecatedCapabilitiesKey] = f
 }
 
-// AddFirefox adds Firefox-specific capabilities.
+// AddFirefox adds Firefox-specific Capabilities_.
 func (c Capabilities) AddFirefox(f firefox.Capabilities) {
 	c[firefox.CapabilitiesKey] = f
 }
 
-// AddProxy adds proxy configuration to the capabilities.
+// AddProxy adds proxy configuration to the Capabilities_.
 func (c Capabilities) AddProxy(p Proxy) {
 	c["proxy"] = p
 }
 
-// AddLogging adds logging configuration to the capabilities.
+// AddLogging adds logging configuration to the Capabilities_.
 func (c Capabilities) AddLogging(l log.Capabilities) {
 	c[log.CapabilitiesKey] = l
 }
@@ -125,7 +125,7 @@ func (c Capabilities) SetLogLevel(typ log.Type, level log.Level) {
 	m[typ] = level
 }
 
-// Proxy specifies configuration for proxies in the browser. Set the key
+// Proxy specifies configuration for proxies in the Browser. Set the key
 // "proxy" in Capabilities to an instance of this type.
 type Proxy struct {
 	// Type is the type of proxy to use. This is required to be populated.
@@ -275,7 +275,7 @@ type WebDriver interface {
 	// SwitchSession switches to the given session ID.
 	SwitchSession(sessionID string) error
 
-	// Capabilities returns the current session's capabilities.
+	// Capabilities returns the current session's Capabilities_.
 	Capabilities() (Capabilities, error)
 
 	// SetAsyncScriptTimeout sets the amount of time that asynchronous scripts
@@ -289,14 +289,14 @@ type WebDriver interface {
 	// loading a page. The timeout will be rounded to nearest millisecond.
 	SetPageLoadTimeout(timeout time.Duration) error
 
-	// Quit ends the current session. The browser instance will be closed.
+	// Quit ends the current session. The Browser instance will be closed.
 	Quit() error
 
 	// CurrentWindowHandle returns the ID of current window handle.
 	CurrentWindowHandle() (string, error)
 	// WindowHandles returns the IDs of current open windows.
 	WindowHandles() ([]string, error)
-	// CurrentURL returns the browser's current URL.
+	// CurrentURL returns the Browser's current URL.
 	CurrentURL() (string, error)
 	// Title returns the current page's title.
 	Title() (string, error)
@@ -319,7 +319,7 @@ type WebDriver interface {
 	// current window will be maximized.
 	ResizeWindow(name string, width, height int) error
 
-	// Get navigates the browser to the provided URL.
+	// Get navigates the Browser to the provided URL.
 	Get(url string) error
 	// Forward moves forward in history.
 	Forward() error
@@ -340,16 +340,16 @@ type WebDriver interface {
 	// DecodeElements decodes a multi-element response.
 	DecodeElements([]byte) ([]WebElement, error)
 
-	// GetCookies returns all of the cookies in the browser's jar.
+	// GetCookies returns all of the cookies in the Browser's jar.
 	GetCookies() ([]Cookie, error)
 	// GetCookie returns the named cookie in the jar, if present. This method is
 	// only implemented for Firefox.
 	GetCookie(name string) (Cookie, error)
-	// AddCookie adds a cookie to the browser's jar.
+	// AddCookie adds a cookie to the Browser's jar.
 	AddCookie(cookie *Cookie) error
-	// DeleteAllCookies deletes all of the cookies in the browser's jar.
+	// DeleteAllCookies deletes all of the cookies in the Browser's jar.
 	DeleteAllCookies() error
-	// DeleteCookie deletes a cookie to the browser's jar.
+	// DeleteCookie deletes a cookie to the Browser's jar.
 	DeleteCookie(name string) error
 
 	// Click clicks a mouse button. The button should be one of RightButton,
@@ -394,10 +394,10 @@ type WebDriver interface {
 	// KeyUp indicates that a previous keystroke sent by KeyDown should be
 	// released.
 	KeyUp(keys string) error
-	// Screenshot takes a screenshot of the browser window.
+	// Screenshot takes a screenshot of the Browser window.
 	Screenshot() ([]byte, error)
 	// Log fetches the logs. Log types must be previously configured in the
-	// capabilities.
+	// Capabilities_.
 	//
 	// NOTE: will return an error (not implemented) on IE11 or Edge drivers.
 	Log(typ log.Type) ([]log.Message, error)
